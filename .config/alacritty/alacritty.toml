@@ -1,0 +1,16 @@
+[terminal.shell]
+program = "tmux"
+
+[window]
+dynamic_title = false
+
+[font]
+normal = { family = "MesloLGS Nerd Font", style = "Regular" }
+size = 10
+
+[keyboard]
+bindings = [
+  { key = "N", mods = "Control | Shift", action = "CreateNewWindow" },
+  { key = "T", mods = "Control | Shift", action = "CreateNewWindow" },
+  { key = "W", mods = "Control | Shift", action = "Quit" },
+]
