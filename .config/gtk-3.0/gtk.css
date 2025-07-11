@@ -1,9 +1,3 @@
 .titlebar {
-  background: #e95420;
-  color: #ffffff;
-}
-
-.titlebar:backdrop {
-  background: #f2f1f0;
-  color: #aea79f;
+  border: none;
 }
