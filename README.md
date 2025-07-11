@@ -7,6 +7,7 @@ Personal config for dev on Linux and Mac machines.
 - [stow](https://www.gnu.org/software/stow/)
 - [zsh](https://zsh.org)
   - [Oh My Zsh](https://ohmyz.sh/)
+  - [Starship](https://starship.rs)
 - [tmux](https://github.com/tmux/tmux)
 - [Alacritty](https://github.com/alacritty/alacritty)
 - [NeoVim](https://neovim.io/)
