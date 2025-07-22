@@ -11,6 +11,7 @@ shell = { program = "tmux" }
 title = ""
 dynamic_title = false
 decorations_theme_variant = "Dark"
+decorations = "none"
 
 [font]
 normal = { family = "MesloLGS Nerd Font", style = "Regular" }

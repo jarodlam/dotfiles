@@ -34,7 +34,7 @@ return {
     opts = {
       highlights = require("catppuccin.groups.integrations.bufferline").get(),
       options = {
-        separator_style = "slant",
+        separator_style = "thin",
       },
     },
   },
