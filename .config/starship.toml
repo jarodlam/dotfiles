@@ -1,7 +1,9 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# for flush prompt
+# [ ](bg:red)\
 format = """
-[ ](bg:red)\
+[](red)\
 $os\
 $username\
 [](bg:peach fg:red)\
