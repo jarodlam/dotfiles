@@ -3,7 +3,7 @@
 #   source ~/.zshrc-jl
 
 # Oh My Zsh
-plugins=(git fast-syntax-highlighting)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
