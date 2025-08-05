@@ -92,7 +92,7 @@ style = "bg:green"
 format = '[[ $symbol( $version)](fg:crust bg:green)]($style)'
 
 [c]
-symbol = " "
+symbol = ""
 style = "bg:green"
 format = '[[ $symbol( $version)](fg:crust bg:green)]($style)'
 
@@ -112,7 +112,7 @@ style = "bg:green"
 format = '[[ $symbol( $version)](fg:crust bg:green)]($style)'
 
 [java]
-symbol = " "
+symbol = ""
 style = "bg:green"
 format = '[[ $symbol( $version)](fg:crust bg:green)]($style)'
 
