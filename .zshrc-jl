@@ -2,17 +2,18 @@
 # Add to bottom of system ~/.zshrc:
 #   source ~/.zshrc-jl
 
-# zsh
-autoload -Uz history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
+# zsh vi mode
+bindkey -v
 
+# zsh syntax highlighting plugin
 source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# Starship
+# fzf
+source <(fzf --zsh)
+
+# starship
 eval "$(starship init zsh)"
 
-# Aliases
+# aliases
 alias nd='nix develop -vvv --command zsh'
 
