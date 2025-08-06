@@ -5,6 +5,15 @@
 # zsh vi mode
 bindkey -v
 
+# zsh history settings
+HISTFILE=~/.zsh_history
+HISTFILESIZE=10000000
+HISTSIZE=10000000
+SAVEHIST=500000
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt APPENDHISTORY
+
 # zsh syntax highlighting plugin
 source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
