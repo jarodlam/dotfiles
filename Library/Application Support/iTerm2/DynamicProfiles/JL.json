@@ -96,7 +96,7 @@
       "Sync Title" : false,
       "Prompt Before Closing 2" : false,
       "BM Growl" : true,
-      "Command" : "tmux",
+      "Command" : "/opt/homebrew/bin/tmux",
       "Description" : "Default",
       "Rewritable" : true,
       "Mouse Reporting" : true,

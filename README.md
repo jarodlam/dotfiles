@@ -26,7 +26,7 @@ Clone to home directory.
 
 ```sh
 cd ~
-git clone git@github.com:jarodlam/dotfiles.git
+git clone --recurse-submodules https://github.com/jarodlam/dotfiles.git
 ```
 
 Create symlinks in home directory for `stow`. Run this every time a new file is added.
