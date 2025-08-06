@@ -2,33 +2,18 @@
 # Add to bottom of system ~/.zshrc:
 #   source ~/.zshrc-jl
 
-# Oh My Zsh
-plugins=()
-
-source $ZSH/oh-my-zsh.sh
-
+# zsh
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
+
+source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # Starship
 eval "$(starship init zsh)"
 
 # Aliases
 alias nd='
-nix develop -vvv --command zsh -c "
-if [ -d \".venv\" ]; then
-  source .venv/bin/activate
-fi
-exec zsh
-"'
-alias nn='
-nix develop -vvv --command zsh -c "
-if [ -d \".venv\" ]; then
-  source .venv/bin/activate
-fi
-nvim
-exec zsh
-"'
+nix develop -vvv --command zsh
 
