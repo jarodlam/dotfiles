@@ -1,0 +1,26 @@
+[general]
+import = ["~/.config/alacritty/catppuccin-frappe.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[terminal]
+shell = { program = "/opt/homebrew/bin/tmux" }
+
+[window]
+title = ""
+dynamic_title = false
+decorations_theme_variant = "Dark"
+decorations = "Buttonless"
+resize_increments = true
+
+[font]
+normal = { family = "MonaspiceAr Nerd Font Mono", style = "Regular" }
+size = 13
+
+[keyboard]
+bindings = [
+  { key = "N", mods = "Control | Shift", action = "CreateNewWindow" },
+  { key = "T", mods = "Control | Shift", action = "CreateNewWindow" },
+  { key = "W", mods = "Control | Shift", action = "Quit" },
+]
