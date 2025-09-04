@@ -1,6 +1,6 @@
-[submodule ".config/zsh/fast-syntax-highlighting"]
-	path = .config/zsh/fast-syntax-highlighting
-	url = ../../zdharma-continuum/fast-syntax-highlighting
-[submodule ".config/nvim"]
-	path = .config/nvim
+[submodule "zsh/.config/zsh/fast-syntax-highlighting"]
+	path = zsh/.config/zsh/fast-syntax-highlighting
+	url = ../../zdharma-continuum/fast-syntax-highlighting.git
+[submodule "nvim/.config/nvim"]
+	path = nvim/.config/nvim
 	url = ../../jarodlam/kickstart.nvim.git

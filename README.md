@@ -6,12 +6,14 @@ Personal config for dev on Linux and Mac machines.
 
 - [stow](https://www.gnu.org/software/stow/)
 - [zsh](https://zsh.org)
-  - [Starship](https://starship.rs)
 - [tmux](https://github.com/tmux/tmux)
-- [Alacritty](https://github.com/alacritty/alacritty)
+- [Starship](https://starship.rs)
+- [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+- Terminal emulator
+  - [Alacritty](https://github.com/alacritty/alacritty) (Linux)
+  - [iTerm2](https://iterm2.com/) (Mac)
 - [NeoVim](https://neovim.io/)
-  - LazyVim dependencies
-    - [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+  - System dependencies
     - [lazygit](https://github.com/jesseduffield/lazygit)
     - [fzf](https://github.com/junegunn/fzf)
     - [ripgrep](https://github.com/BurntSushi/ripgrep)
@@ -19,6 +21,7 @@ Personal config for dev on Linux and Mac machines.
   - Language server dependencies
     - [Node](https://github.com/nvm-sh/nvm)
     - [Rust](https://rustup.rs/)
+    - May also need `unzip`, `python3-venv`, and `clang`
 
 ## Usage
 
@@ -29,11 +32,13 @@ cd ~
 git clone --recurse-submodules https://github.com/jarodlam/dotfiles.git
 ```
 
-Create symlinks in home directory for `stow`. Run this every time a new file is added.
+Creates symlinks in home directory for each desired module. Run this every time a new file is added.
 
 ```sh
 cd ~/dotfiles
-stow .
+stow [MODULES...]
+# e.g.
+stow nvim tmux starship zsh
 ```
 
 ## Removal
