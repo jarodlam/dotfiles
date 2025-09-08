@@ -143,8 +143,7 @@ ignore_base = false
 
 [nix_shell]
 symbol = "󱄅"
-# format = ' $symbol( $name)'
-format = ' $symbol'
+format = ' $symbol( $name)'
 
 [time]
 disabled = false
