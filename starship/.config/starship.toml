@@ -17,7 +17,8 @@ $directory\
 $git_branch\
 $git_status\
 ](bg:yellow fg:crust)\
-[](bg:green fg:yellow)\
+${custom.single_line}\
+${custom.dual_line}\
 [\
 $c\
 $rust\
@@ -34,11 +35,11 @@ $python\
 $conda\
 $nix_shell\
 ](bg:sapphire fg:crust)\
-[](bg:lavender fg:sapphire)\
+[ ](bg:lavender fg:sapphire)\
 [\
 $time\
 ](bg:lavender fg:crust)\
-[ ](bg:none fg:lavender)\
+[](bg:crust fg:lavender)\
 $cmd_duration\
 $line_break\
 $character"""
@@ -92,6 +93,7 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 format = ' $symbol $branch'
+truncation_length = 30
 
 [git_status]
 format = '( $all_status$ahead_behind)'
@@ -148,7 +150,7 @@ format = ' $symbol( $name)'
 [time]
 disabled = false
 time_format = "%R"
-format = '  $time '
+format = ' $time'
 
 [line_break]
 disabled = false
@@ -164,11 +166,23 @@ vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
 [cmd_duration]
 show_milliseconds = true
-format = " in $duration "
-style = "bg:lavender"
+format = "  in $duration "
 disabled = false
 show_notifications = true
 min_time_to_notify = 45000
+
+[custom.single_line]
+format = """
+[](bg:green fg:yellow)\
+"""
+when = '(($(tput cols 2> /dev/tty) > 150))'
+
+[custom.dual_line]
+format = """
+[](bg:none fg:yellow)
+[](bg:none fg:green)\
+"""
+when = '(($(tput cols 2> /dev/tty) < 150))'
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
