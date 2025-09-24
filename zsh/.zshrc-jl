@@ -23,6 +23,15 @@ source <(fzf --zsh)
 # starship
 eval "$(starship init zsh)"
 
+# yazi
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
 # aliases
-alias nd='(){ nix develop .#$1 -vvv --command zsh }'
+alias nd='(){ nix develop .#$1 -vv --command zsh }'
 
