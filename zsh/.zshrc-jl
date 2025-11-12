@@ -17,6 +17,10 @@ setopt APPENDHISTORY
 # zsh syntax highlighting plugin
 source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+# default editor
+export VISUAL=nvim
+export EDITOR=nvim
+
 # fzf
 source <(fzf --zsh)
 
