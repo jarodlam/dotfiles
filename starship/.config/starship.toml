@@ -39,12 +39,12 @@ $nix_shell\
 [\
 $time\
 ](bg:lavender fg:crust)\
-[](bg:crust fg:lavender)\
+[](bg:none fg:lavender)\
 $cmd_duration\
 $line_break\
 $character"""
 
-palette = 'catppuccin_mocha'
+palette = 'catppuccin_mocha_greyscale'
 
 [os]
 disabled = false
@@ -183,6 +183,34 @@ format = """
 [](bg:none fg:green)\
 """
 when = '(($(tput cols 2> /dev/tty) < 150))'
+
+[palettes.catppuccin_mocha_greyscale]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#e1e1e1"
+subtext1 = "#cccccc"
+subtext0 = "#b7b7b7"
+overlay2 = "#a2a2a2"
+overlay1 = "#8e8e8e"
+overlay0 = "#797979"
+surface2 = "#646464"
+surface1 = "#505050"
+surface0 = "#3a3a3a"
+base = "#262626"
+mantle = "#1f1f1f"
+crust = "#161616"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
