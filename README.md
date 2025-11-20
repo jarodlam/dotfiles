@@ -14,6 +14,7 @@ Personal config for dev on Linux and Mac machines.
   - [iTerm2](https://iterm2.com/) (Mac)
 - [NeoVim](https://neovim.io/)
   - System dependencies
+    - [gitui](https://github.com/gitui-org/gitui)
     - [lazygit](https://github.com/jesseduffield/lazygit)
     - [fzf](https://github.com/junegunn/fzf)
     - [ripgrep](https://github.com/BurntSushi/ripgrep)
