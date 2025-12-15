@@ -1,0 +1,20 @@
+theme = Catppuccin Mocha
+palette = 0=#505050
+palette = 7=#b7b7b7
+palette = 8=#646464
+palette = 15=#bac2de
+background = #262626
+foreground = #e1e1e1
+cursor-color = #f5e0dc
+cursor-text = #262626
+selection-background = #646464
+selection-foreground = #e1e1e1
+
+window-padding-x = 2
+window-padding-y = 2
+window-padding-balance = true
+
+title = " "
+
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
