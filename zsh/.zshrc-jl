@@ -17,6 +17,9 @@ setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt APPENDHISTORY
 
+# zsh autocomplete dot files
+setopt GLOBDOTS
+
 # zsh syntax highlighting plugin
 source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
