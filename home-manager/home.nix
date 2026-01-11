@@ -50,11 +50,16 @@
       ripgrep
       ruff
       starship
+      statix
       stow
       tmux
       tree
       unzip
       zsh
+
+      (writeShellScriptBin "hms" ''
+        ${home-manager}/bin/home-manager switch --flake ~/dotfiles/home-manager#default --impure
+      '')
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage

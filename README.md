@@ -13,7 +13,7 @@ git clone --recurse-submodules https://github.com/jarodlam/dotfiles.git ~/dotfil
 Install Nix and Home Manager: <https://nix-community.github.io/home-manager/index.xhtml#sec-install-standalone>
 
 ```sh
-home-manager switch --flake ~/dotfiles/home-manager# default --impure
+home-manager switch --flake ~/dotfiles/home-manager#default --impure
 ```
 
 Install [Ghostty](https://ghostty.org) manually.
