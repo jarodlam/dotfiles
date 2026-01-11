@@ -3,7 +3,8 @@ palette = 0=#505050
 palette = 7=#b7b7b7
 palette = 8=#646464
 palette = 15=#bac2de
-background = #262626
+#background = #262626
+background = #000000
 foreground = #e1e1e1
 cursor-color = #f5e0dc
 cursor-text = #262626
