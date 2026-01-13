@@ -1,0 +1,6 @@
+ignore = [
+  '.direnv'
+]
+disabled = [
+  'repeated_keys'
+]
