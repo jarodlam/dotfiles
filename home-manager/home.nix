@@ -38,24 +38,35 @@
       #   echo "Hello, ${config.home.username}!"
       # '')
       buf
-      clang
-      clang-tools
       fd
       fzf
       gh
       lazygit
       neovim
-      nixfmt
-      python3
       ripgrep
-      ruff
       starship
-      statix
       stow
       tmux
       tree
-      unzip
       zsh
+
+      # Neovim Mason LSP dependencies
+      (lib.hiPrio clang) # avoid c++ binary collision with gcc
+      gcc
+      go
+      python315
+      python315Packages.pip
+      nixfmt
+      nodejs
+      ruff
+      rustup
+      statix
+      unzip
+
+      # Neovim Snacks.image rendering
+      ghostscript # PDF
+      mermaid-cli # Mermaid
+      tectonic # TeX math expressiosn
 
       (writeShellScriptBin "hms" ''
         ${home-manager}/bin/home-manager switch --flake ~/dotfiles/home-manager#default --impure

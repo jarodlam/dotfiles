@@ -34,6 +34,13 @@ cd ~/dotfiles
 stow -D .
 ```
 
+## Set default shell to `zsh`
+
+```sh
+command -v zsh | sudo tee -a /etc/shells
+sudo chsh -s "$(command -v zsh)" "${USER}"
+```
+
 ## Greyscale Catppuccin Mocha
 
 This is a modification of the [Catppuccin Mocha palette](https://catppuccin.com/palette/) that uses greyscale foreground and background colours with no bluish tint:

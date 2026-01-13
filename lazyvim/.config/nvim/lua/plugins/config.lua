@@ -185,4 +185,31 @@ return {
     dependencies = { "MunifTanjim/nui.nvim" },
     opts = {},
   },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        clangd = {
+          -- https://github.com/mason-org/mason.nvim/issues/1578#issuecomment-2927987751
+          mason = false, -- Skip Mason installation
+          cmd = {
+            "clangd", -- Use system clangd (from the PATH env variable)
+          },
+        },
+        nil_ls = {
+          settings = {
+            ['nil'] = {
+              nix = {
+                flake = {
+                  -- Don't automatically fetch flake inputs
+                  -- https://github.com/oxalica/nil/blob/main/docs/configuration.md
+                  autoArchive = false,
+                }
+              }
+            }
+          }
+        }
+      },
+    },
+  },
 }
