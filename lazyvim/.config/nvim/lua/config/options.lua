@@ -7,3 +7,6 @@ vim.o.laststatus = 2
 
 -- No auto-format
 vim.g.autoformat = false
+
+-- Soft wrap
+vim.o.wrap = true
