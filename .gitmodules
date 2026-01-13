@@ -4,12 +4,6 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = ../../jarodlam/kickstart.nvim.git
-[submodule "tmux/.config/tmux/plugins/tmux"]
-	path = tmux/.config/tmux/plugins/tmux
-	url = https://github.com/catppuccin/tmux.git
-[submodule "tmux/.config/tmux/plugins/catppuccin/tmux"]
-	path = tmux/.config/tmux/plugins/catppuccin/tmux
-	url = https://github.com/catppuccin/tmux.git
 [submodule "tmux/.config/tmux/plugins/vim-tmux-navigator"]
 	path = tmux/.config/tmux/plugins/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
