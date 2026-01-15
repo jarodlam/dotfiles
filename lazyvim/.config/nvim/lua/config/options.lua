@@ -10,3 +10,6 @@ vim.g.autoformat = false
 
 -- Soft wrap
 vim.o.wrap = true
+
+-- Sync with system clipboard
+vim.o.clipboard = "unnamedplus"

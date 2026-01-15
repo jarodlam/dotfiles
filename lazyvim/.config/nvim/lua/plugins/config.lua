@@ -198,17 +198,17 @@ return {
         },
         nil_ls = {
           settings = {
-            ['nil'] = {
+            ["nil"] = {
               nix = {
                 flake = {
                   -- Don't automatically fetch flake inputs
                   -- https://github.com/oxalica/nil/blob/main/docs/configuration.md
                   autoArchive = false,
-                }
-              }
-            }
-          }
-        }
+                },
+              },
+            },
+          },
+        },
       },
     },
   },

@@ -3,7 +3,7 @@
 #   source ~/.zshrc-jl
 
 # Enforce term
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 # zsh vi mode
 bindkey -v
