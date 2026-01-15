@@ -38,6 +38,7 @@
       #   echo "Hello, ${config.home.username}!"
       # '')
       buf
+      direnv
       fd
       fzf
       gh
@@ -54,8 +55,9 @@
       (lib.hiPrio clang) # avoid c++ binary collision with gcc
       gcc
       go
-      python315
-      python315Packages.pip
+      # Broken, use system-managed Python
+      # python315
+      # python315Packages.pip
       nixfmt
       nodejs
       ruff

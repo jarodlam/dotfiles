@@ -2,6 +2,9 @@
 
 Personal config for dev on Linux and Mac machines.
 
+Current philosophy is to use Nix purely as a cross-platform package manager.
+Dotfiles are managed with Stow and system config is out of scope.
+
 ## Setup
 
 Clone this repo.
@@ -10,7 +13,15 @@ Clone this repo.
 git clone --recurse-submodules https://github.com/jarodlam/dotfiles.git ~/dotfiles/
 ```
 
-Install Nix and Home Manager: <https://nix-community.github.io/home-manager/index.xhtml#sec-install-standalone>
+Install Nix.
+
+Install Home Manager into Nix profile:
+
+```sh
+nix profile install github:NixOS/nixpkgs/nixos-25.11#home-manager --priority 0
+```
+
+Switch to Home Manager configuration:
 
 ```sh
 home-manager switch --flake ~/dotfiles/home-manager#default --impure
@@ -18,7 +29,7 @@ home-manager switch --flake ~/dotfiles/home-manager#default --impure
 
 Install [Ghostty](https://ghostty.org) manually.
 
-Dotfiles are managed with Stow, they may be migrated to Home Manager some day.
+Use Stow to symlink dotfiles:
 
 ```sh
 cd ~/dotfiles
