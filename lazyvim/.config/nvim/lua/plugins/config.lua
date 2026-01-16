@@ -183,7 +183,9 @@ return {
     "m4xshen/hardtime.nvim",
     lazy = false,
     dependencies = { "MunifTanjim/nui.nvim" },
-    opts = {},
+    opts = {
+      disable_mouse = false,
+    },
   },
   {
     "neovim/nvim-lspconfig",
