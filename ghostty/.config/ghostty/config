@@ -19,3 +19,8 @@ title = " "
 
 macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
+
+clipboard-read = allow
+clipboard-write = allow
+
+mouse-scroll-multiplier = 1
