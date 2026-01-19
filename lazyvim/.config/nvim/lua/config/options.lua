@@ -13,3 +13,6 @@ vim.o.wrap = true
 
 -- Sync with system clipboard
 vim.o.clipboard = "unnamedplus"
+
+-- Scroll one line at a time with mouse, OS should handle scroll multiplier
+vim.o.mousescroll = "ver:1,hor:2"
