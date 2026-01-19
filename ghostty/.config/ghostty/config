@@ -24,3 +24,6 @@ clipboard-read = allow
 clipboard-write = allow
 
 mouse-scroll-multiplier = 1
+
+# disable programing ligatures
+font-feature = -calt
