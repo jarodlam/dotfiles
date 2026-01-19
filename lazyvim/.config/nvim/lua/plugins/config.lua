@@ -87,6 +87,8 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
+    -- This is copied from the default LazyVim config, then modified
+    -- https://www.lazyvim.org/plugins/ui
     opts = {
       options = {
         -- theme = "catppuccin",
@@ -94,8 +96,27 @@ return {
         section_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_a = { { "mode", separator = { left = "", right = "" }, right_padding = 2 } },
-        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_a = {
+          {
+            "mode",
+            fmt = function(str)
+              if vim.api.nvim_win_get_width(0) >= 80 then
+                return str
+              else
+                return str:sub(1, 1)
+              end
+            end,
+            separator = { left = "", right = "" },
+          },
+        },
+        lualine_b = {
+          {
+            "branch",
+            cond = function()
+              return vim.api.nvim_win_get_width(0) >= 80
+            end,
+          },
+        },
         lualine_c = {
           "filename",
           {
@@ -108,8 +129,75 @@ return {
             },
           },
         },
-        -- lualine_x is LazyVim default
-        lualine_y = { "lsp_status" },
+        lualine_x = {
+          require("snacks").profiler.status(),
+          {
+            function()
+              return require("noice").api.status.command.get()
+            end,
+            cond = function()
+              return package.loaded["noice"]
+                and require("noice").api.status.command.has()
+                and vim.api.nvim_win_get_width(0) >= 80
+            end,
+            color = function()
+              return { fg = require("snacks").util.color("Statement") }
+            end,
+          },
+          {
+            function()
+              return require("noice").api.status.mode.get()
+            end,
+            cond = function()
+              return package.loaded["noice"]
+                and require("noice").api.status.mode.has()
+                and vim.api.nvim_win_get_width(0) >= 80
+            end,
+            color = function()
+              return { fg = require("snacks").util.color("Constant") }
+            end,
+          },
+          {
+            function()
+              return "  " .. require("dap").status()
+            end,
+            cond = function()
+              return package.loaded["dap"] and require("dap").status() ~= "" and vim.api.nvim_win_get_width(0) >= 80
+            end,
+            color = function()
+              return { fg = require("snacks.util").color("Debug") }
+            end,
+          },
+          {
+            "diff",
+            symbols = {
+              added = require("lazyvim.config").icons.git.added,
+              modified = require("lazyvim.config").icons.git.modified,
+              removed = require("lazyvim.config").icons.git.removed,
+            },
+            source = function()
+              local gitsigns = vim.b.gitsigns_status_dict
+              if gitsigns then
+                return {
+                  added = gitsigns.added,
+                  modified = gitsigns.changed,
+                  removed = gitsigns.removed,
+                }
+              end
+            end,
+            cond = function()
+              return vim.api.nvim_win_get_width(0) >= 80
+            end,
+          },
+        },
+        lualine_y = {
+          {
+            "lsp_status",
+            cond = function()
+              return vim.api.nvim_win_get_width(0) >= 80
+            end,
+          },
+        },
         lualine_z = {
           { "location", separator = { left = "", right = "" }, left_padding = 0 },
         },
