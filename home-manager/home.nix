@@ -38,6 +38,7 @@
       #   echo "Hello, ${config.home.username}!"
       # '')
       buf
+      claude-code
       direnv
       fd
       fzf
