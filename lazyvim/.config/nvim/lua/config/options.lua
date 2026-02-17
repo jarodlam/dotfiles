@@ -2,8 +2,11 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
--- Show status line per-window
-vim.o.laststatus = 2
+-- Show global status line instead of per-window
+vim.o.laststatus = 3
+
+-- Show filename at the top of each window
+vim.opt.winbar = "%f"
 
 -- No auto-format
 vim.g.autoformat = false
