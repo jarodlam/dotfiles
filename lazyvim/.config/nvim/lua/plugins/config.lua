@@ -267,14 +267,14 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
-  {
-    "m4xshen/hardtime.nvim",
-    lazy = false,
-    dependencies = { "MunifTanjim/nui.nvim" },
-    opts = {
-      disable_mouse = false,
-    },
-  },
+  -- {
+  --   "m4xshen/hardtime.nvim",
+  --   lazy = false,
+  --   dependencies = { "MunifTanjim/nui.nvim" },
+  --   opts = {
+  --     disable_mouse = false,
+  --   },
+  -- },
   {
     "neovim/nvim-lspconfig",
     opts = {
