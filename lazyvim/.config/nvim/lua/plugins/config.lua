@@ -267,6 +267,9 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+  {
+    "RyanMillerC/better-vim-tmux-resizer",
+  },
   -- {
   --   "m4xshen/hardtime.nvim",
   --   lazy = false,
