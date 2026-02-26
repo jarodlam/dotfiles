@@ -1,3 +1,4 @@
+# Theme
 theme = Catppuccin Mocha
 palette = 0=#505050
 palette = 7=#b7b7b7
@@ -11,21 +12,30 @@ cursor-text = #262626
 selection-background = #646464
 selection-foreground = #e1e1e1
 
+# Window padding
 window-padding-x = 2
 window-padding-y = 2
 window-padding-balance = true
 
+# Blank tab and window titles
 title = " "
 
+# Minimal title bar
 macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
 
+# Allow terminal apps to read/write clipboard
 clipboard-read = allow
 clipboard-write = allow
 
+# Don't apply a scroll multiplier, let the OS handle this
 mouse-scroll-multiplier = 1
 
 # disable programing ligatures
 font-feature = -calt
 
+# Make Ghostty transfer its terminfo to SSH hosts
 shell-integration-features = ssh-terminfo,ssh-env
+
+# Use option key as alt/meta
+macos-option-as-alt = true
