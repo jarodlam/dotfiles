@@ -42,6 +42,9 @@ function y() {
   rm -f -- "$tmp"
 }
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # aliases
 alias nd='(){ nix develop .#$1 -vv --command zsh }'
 
