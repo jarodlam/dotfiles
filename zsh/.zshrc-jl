@@ -1,9 +1,12 @@
 # Layered on top of system config.
-# Add to bottom of system ~/.zshrc:
+# Add to top of system ~/.zshrc:
 #   source ~/.zshrc-jl
 
-# Enforce term
-# export TERM=xterm-256color
+# Enable zsh completion system
+autoload -Uz compinit
+autoload -Uz bashcompinit
+compinit
+bashcompinit
 
 # zsh vi mode
 bindkey -v
@@ -47,4 +50,4 @@ eval "$(direnv hook zsh)"
 
 # aliases
 alias nd='(){ nix develop .#$1 -vv --command zsh }'
-
+alias lg='lazygit'
