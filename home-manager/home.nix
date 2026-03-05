@@ -38,7 +38,7 @@
       #   echo "Hello, ${config.home.username}!"
       # '')
       buf
-      claude-code
+      unstable.claude-code
       direnv
       fd
       fzf
