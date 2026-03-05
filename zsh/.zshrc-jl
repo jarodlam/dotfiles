@@ -50,4 +50,5 @@ eval "$(direnv hook zsh)"
 
 # aliases
 alias nd='(){ nix develop .#$1 -vv --command zsh }'
+alias nr='ulimit -v 10485760 && nix repl'
 alias lg='lazygit'
