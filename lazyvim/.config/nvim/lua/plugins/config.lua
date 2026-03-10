@@ -281,6 +281,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      inlay_hints = {
+        enabled = false,
+      },
       servers = {
         clangd = {
           -- https://github.com/mason-org/mason.nvim/issues/1578#issuecomment-2927987751
