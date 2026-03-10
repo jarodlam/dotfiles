@@ -305,4 +305,18 @@ return {
       },
     },
   },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      heading = {
+        -- Only highlight heading text, not entire line
+        width = "block",
+        border = "thin",
+      },
+      code = {
+        -- Prevents code block end delimiters from hiding the whole line
+        border = "thin",
+      },
+    },
+  },
 }
