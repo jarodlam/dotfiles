@@ -306,6 +306,15 @@ return {
     },
   },
   {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        -- Don't accept changes on carriage return
+        ["<CR>"] = false,
+      },
+    },
+  },
+  {
     "MeanderingProgrammer/render-markdown.nvim",
     opts = {
       heading = {
