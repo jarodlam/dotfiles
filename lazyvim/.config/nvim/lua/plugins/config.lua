@@ -285,6 +285,17 @@ return {
         enabled = false,
       },
       servers = {
+        buf_ls = {
+          root_dir = function(bufnr, on_dir)
+            -- Root is the nearest ancestor named proto/protos, or containing buf.yaml/.git
+            local proto = vim.fs.find({ "proto", "protos" }, {
+              upward = true,
+              type = "directory",
+              path = vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr)),
+            })[1]
+            on_dir(proto or vim.fs.root(bufnr, { "buf.yaml", ".git" }))
+          end,
+        },
         clangd = {
           -- https://github.com/mason-org/mason.nvim/issues/1578#issuecomment-2927987751
           mason = false, -- Skip Mason installation

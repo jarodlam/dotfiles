@@ -67,8 +67,19 @@ When debugging plugin behavior, read the actual source code rather than guessing
 - **Mason-installed tools**: `~/.local/share/nvim/mason/bin/` (not in PATH; use full path to test CLI tools)
 - **Plugin lock file**: `lazyvim/.config/nvim/lazy-lock.json` (pinned versions of all plugins)
 
+### Debugging: Finding Neovim Runtime Source
+
+- **Neovim runtime**: Run `nvim --headless -c 'lua vim.print(vim.env.VIMRUNTIME)' -c 'qa'` to find the path (Nix-managed, so it changes per version).
+- **LSP core**: `$VIMRUNTIME/lua/vim/lsp.lua` and `$VIMRUNTIME/lua/vim/lsp/`
+- **vim.fs utilities**: `$VIMRUNTIME/lua/vim/fs.lua` (`vim.fs.root`, `vim.fs.find`, etc.)
+- **Debugging in tmux**: Spawn `tmux new-session -d -s test "nvim file"`, then `tmux send-keys -t test ':lua ...' Enter` and `tmux capture-pane -t test -p` to inspect.
+
 ### Key Architecture Notes
 
 - Plugin specs from user config, LazyVim defaults, and extras are all deep-merged by lazy.nvim. User overrides in `config.lua` merge with (not replace) LazyVim defaults.
 - To understand a plugin's effective config, check both the user override in `config.lua` AND the LazyVim default/extra that configures it.
+- **LSP server names**: Server names in `opts.servers` must match the filename in `nvim-lspconfig/lsp/` (e.g. `buf_ls` not `buf`). Functions in `opts.servers.<name>` work fine — they survive lazy.nvim's `vim.tbl_deep_extend` merging.
+- **`vim.lsp.Config.root_dir` function signature**: Uses async callback pattern: `function(bufnr, on_dir)` where you call `on_dir(path)`. Do NOT return the path.
+- **`root_markers` vs `root_dir`**: `root_markers` finds a parent directory *containing* a named child. To match a directory by its own name, use `root_dir` with `vim.fs.find({name}, {upward=true, type="directory"})`.
+- **nvim-lspconfig default configs**: `~/.local/share/nvim/lazy/nvim-lspconfig/lsp/<server>.lua` — these are merged via `vim.lsp.config` resolution (rtp defaults → user config). Check these to understand what root_markers/cmd/filetypes are set by default.
 - render-markdown.nvim gotcha: `code.border = "hide"` (the default) hides entire code fence lines via `conceal_lines`. The `conceal_delimiters` option only does character-level conceal and has no visible effect when `border = "hide"`. The `language` option controls a virtual text overlay on the delimiter line that also visually replaces its content.
