@@ -13,6 +13,11 @@ return {
     opts = {
       flavour = "mocha",
       transparent_background = true,
+      custom_highlights = function()
+        return {
+          WinBar = { bold = true, italic = true },
+        }
+      end,
       color_overrides = {
         -- Greyscale Catppuccin overrides
         mocha = {
@@ -317,11 +322,6 @@ return {
         tab_size = 0,
       },
     },
-  },
-  {
-    "b0o/incline.nvim",
-    event = "BufReadPre",
-    enabled = true,
   },
   {
     "dstein64/nvim-scrollview",
