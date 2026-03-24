@@ -215,6 +215,115 @@ return {
     },
   },
   {
+    "akinsho/bufferline.nvim",
+    config = function(_, opts)
+      local C = require("catppuccin.palettes").get_palette()
+      local pill_bg = C.surface0
+      local fill_bg = C.base
+
+      -- Pill-shaped tab highlights using catppuccin palette
+      opts.highlights = {
+        fill = { bg = fill_bg },
+        background = { fg = C.overlay1, bg = fill_bg },
+        buffer_selected = { fg = C.text, bg = pill_bg, bold = true, italic = false },
+        buffer_visible = { fg = C.overlay1, bg = fill_bg },
+
+        separator = { fg = fill_bg, bg = fill_bg },
+        separator_selected = { fg = pill_bg, bg = fill_bg },
+        separator_visible = { fg = fill_bg, bg = fill_bg },
+
+        close_button = { fg = C.surface2, bg = fill_bg },
+        close_button_selected = { fg = C.text, bg = pill_bg },
+        close_button_visible = { fg = C.surface2, bg = fill_bg },
+
+        modified = { fg = C.peach, bg = fill_bg },
+        modified_selected = { fg = C.peach, bg = pill_bg },
+        modified_visible = { fg = C.peach, bg = fill_bg },
+
+        duplicate = { fg = C.surface2, bg = fill_bg, italic = true },
+        duplicate_selected = { fg = C.subtext1, bg = pill_bg, italic = true },
+        duplicate_visible = { fg = C.surface2, bg = fill_bg, italic = true },
+
+        indicator_selected = { fg = pill_bg, bg = pill_bg },
+        indicator_visible = { fg = fill_bg, bg = fill_bg },
+
+        diagnostic = { fg = C.subtext0, bg = fill_bg },
+        diagnostic_selected = { fg = C.subtext0, bg = pill_bg },
+        diagnostic_visible = { fg = C.subtext0, bg = fill_bg },
+        error = { fg = C.red, bg = fill_bg },
+        error_selected = { fg = C.red, bg = pill_bg },
+        error_visible = { fg = C.red, bg = fill_bg },
+        error_diagnostic = { fg = C.red, bg = fill_bg },
+        error_diagnostic_selected = { fg = C.red, bg = pill_bg },
+        error_diagnostic_visible = { fg = C.red, bg = fill_bg },
+        warning = { fg = C.yellow, bg = fill_bg },
+        warning_selected = { fg = C.yellow, bg = pill_bg },
+        warning_visible = { fg = C.yellow, bg = fill_bg },
+        warning_diagnostic = { fg = C.yellow, bg = fill_bg },
+        warning_diagnostic_selected = { fg = C.yellow, bg = pill_bg },
+        warning_diagnostic_visible = { fg = C.yellow, bg = fill_bg },
+        info = { fg = C.sky, bg = fill_bg },
+        info_selected = { fg = C.sky, bg = pill_bg },
+        info_visible = { fg = C.sky, bg = fill_bg },
+        info_diagnostic = { fg = C.sky, bg = fill_bg },
+        info_diagnostic_selected = { fg = C.sky, bg = pill_bg },
+        info_diagnostic_visible = { fg = C.sky, bg = fill_bg },
+        hint = { fg = C.teal, bg = fill_bg },
+        hint_selected = { fg = C.teal, bg = pill_bg },
+        hint_visible = { fg = C.teal, bg = fill_bg },
+        hint_diagnostic = { fg = C.teal, bg = fill_bg },
+        hint_diagnostic_selected = { fg = C.teal, bg = pill_bg },
+        hint_diagnostic_visible = { fg = C.teal, bg = fill_bg },
+
+        numbers = { fg = C.subtext0, bg = fill_bg },
+        numbers_selected = { fg = C.subtext0, bg = pill_bg },
+        numbers_visible = { fg = C.subtext0, bg = fill_bg },
+        pick = { fg = C.red, bg = fill_bg },
+        pick_selected = { fg = C.red, bg = pill_bg },
+        pick_visible = { fg = C.red, bg = fill_bg },
+
+        tab = { fg = C.overlay1, bg = fill_bg },
+        tab_selected = { fg = C.text, bg = pill_bg, bold = true, italic = false },
+        tab_separator = { fg = fill_bg, bg = fill_bg },
+        tab_separator_selected = { fg = pill_bg, bg = fill_bg },
+        tab_close = { fg = C.red, bg = fill_bg },
+        trunc_marker = { fg = C.overlay1, bg = fill_bg },
+      }
+
+      -- Monkey-patch slant separator chars to round Powerline chars for pill-shaped tabs
+      local constants = require("bufferline.constants")
+      constants.sep_chars[constants.sep_names.slant] = { "\xee\x82\xb4", "\xee\x82\xb6" }
+      require("bufferline").setup(opts)
+
+      -- Fix one-space gap between left pill cap and tab content:
+      -- In slant mode, the indicator space inherits the separator highlight (bg=fill)
+      -- instead of the buffer highlight (bg=pill). Wrap the global tabline function
+      -- to insert the correct highlight before that indicator space.
+      local orig_tabline = _G.nvim_bufferline
+      _G.nvim_bufferline = function()
+        local result = orig_tabline()
+        -- Fix left pill gap: inject BufferSelected highlight before the indicator space
+        result = result:gsub(
+          "(%%#BufferLineSeparatorSelected#...)([ ])",
+          "%1%%#BufferLineBufferSelected#%2"
+        )
+        -- Fix right pill gap: remove trailing space before the right pill cap
+        result = result:gsub(
+          " (%%#BufferLineSeparatorSelected#\xee\x82\xb4)",
+          "%1"
+        )
+        return result
+      end
+    end,
+    opts = {
+      options = {
+        separator_style = "slant",
+        always_show_bufferline = true,
+        tab_size = 0,
+      },
+    },
+  },
+  {
     "b0o/incline.nvim",
     event = "BufReadPre",
     enabled = true,
