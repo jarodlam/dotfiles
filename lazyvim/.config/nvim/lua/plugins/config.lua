@@ -304,15 +304,9 @@ return {
       _G.nvim_bufferline = function()
         local result = orig_tabline()
         -- Fix left pill gap: inject BufferSelected highlight before the indicator space
-        result = result:gsub(
-          "(%%#BufferLineSeparatorSelected#...)([ ])",
-          "%1%%#BufferLineBufferSelected#%2"
-        )
+        result = result:gsub("(%%#BufferLineSeparatorSelected#...)([ ])", "%1%%#BufferLineBufferSelected#%2")
         -- Fix right pill gap: remove trailing space before the right pill cap
-        result = result:gsub(
-          " (%%#BufferLineSeparatorSelected#\xee\x82\xb4)",
-          "%1"
-        )
+        result = result:gsub(" (%%#BufferLineSeparatorSelected#\xee\x82\xb4)", "%1")
         return result
       end
     end,
@@ -412,6 +406,9 @@ return {
           cmd = {
             "clangd", -- Use system clangd (from the PATH env variable)
           },
+        },
+        statix = {
+          enabled = false,
         },
         nil_ls = {
           settings = {
