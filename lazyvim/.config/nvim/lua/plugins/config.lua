@@ -374,14 +374,6 @@ return {
   {
     "RyanMillerC/better-vim-tmux-resizer",
   },
-  -- {
-  --   "m4xshen/hardtime.nvim",
-  --   lazy = false,
-  --   dependencies = { "MunifTanjim/nui.nvim" },
-  --   opts = {
-  --     disable_mouse = false,
-  --   },
-  -- },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -447,6 +439,15 @@ return {
         -- Prevents code block end delimiters from hiding the whole line
         border = "thin",
       },
+    },
+  },
+  {
+    "tadaa/vimade",
+    opts = {
+      recipe = { "default" },
+      fadelevel = 0.7,
+      enablefocusfading = true, -- tmux support
+      ncmode = "windows", -- fade by window, not buffer
     },
   },
 }
