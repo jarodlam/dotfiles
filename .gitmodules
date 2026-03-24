@@ -1,9 +1,6 @@
 [submodule "zsh/.config/zsh/fast-syntax-highlighting"]
 	path = zsh/.config/zsh/fast-syntax-highlighting
 	url = ../../zdharma-continuum/fast-syntax-highlighting.git
-[submodule "nvim/.config/nvim"]
-	path = nvim/.config/nvim
-	url = ../../jarodlam/kickstart.nvim.git
 [submodule "tmux/.config/tmux/plugins/vim-tmux-navigator"]
 	path = tmux/.config/tmux/plugins/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
