@@ -48,6 +48,7 @@
       ripgrep
       starship
       stow
+      tldr
       tmux
       tree
       zsh
