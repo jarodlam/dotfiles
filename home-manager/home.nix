@@ -37,6 +37,7 @@
       # (writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
+      bash
       buf
       unstable.claude-code
       direnv
