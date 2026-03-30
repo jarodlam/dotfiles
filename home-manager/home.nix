@@ -14,7 +14,6 @@ let
       nodejs
       ruff
       rustup
-      statix
       unzip
 
       # Snacks.image rendering
