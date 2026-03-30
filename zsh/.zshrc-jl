@@ -33,6 +33,10 @@ export EDITOR=nvim
 # fzf
 source <(fzf --zsh)
 
+# zsh instant ESC key for vi mode
+# https://github.com/starship/starship/discussions/7104#discussioncomment-15344825
+export KEYTIMEOUT=1
+
 # starship
 eval "$(starship init zsh)"
 
