@@ -1,5 +1,39 @@
-{ config, pkgs, ... }:
+{ pkgs, lib, ... }:
+let
+  # Build tools and language runtimes required for Neovim plugins.
+  # Bundled into neovim's PATH so they don't conflict with dev shells.
+  neovim-dependencies = pkgs.buildEnv {
+    name = "neovim-dependencies";
+    paths = with pkgs; [
+      # Build tools for Mason-managed LSPs
+      (lib.hiPrio clang) # avoid c++ binary collision with gcc
+      gcc
+      go
+      python3
+      nixfmt
+      nodejs
+      ruff
+      rustup
+      statix
+      unzip
 
+      # Snacks.image rendering
+      ghostscript # PDF
+      mermaid-cli # Mermaid
+      tectonic # TeX math expressions
+    ];
+  };
+
+  neovim-wrapped = pkgs.symlinkJoin {
+    name = "neovim-wrapped";
+    paths = [ pkgs.neovim ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/nvim \
+        --prefix PATH : ${neovim-dependencies}/bin
+    '';
+  };
+in
 {
   home = {
 
@@ -45,7 +79,7 @@
       fzf
       gh
       lazygit
-      neovim
+      neovim-wrapped
       ripgrep
       starship
       stow
@@ -53,25 +87,6 @@
       tmux
       tree
       zsh
-
-      # Neovim Mason LSP dependencies
-      (lib.hiPrio clang) # avoid c++ binary collision with gcc
-      gcc
-      go
-      # Broken, use system-managed Python
-      # python315
-      # python315Packages.pip
-      nixfmt
-      nodejs
-      ruff
-      rustup
-      statix
-      unzip
-
-      # Neovim Snacks.image rendering
-      ghostscript # PDF
-      mermaid-cli # Mermaid
-      tectonic # TeX math expressiosn
 
       (writeShellScriptBin "hms" ''
         ${home-manager}/bin/home-manager switch --flake ~/dotfiles/home-manager#default --impure
