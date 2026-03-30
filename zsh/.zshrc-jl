@@ -26,6 +26,9 @@ setopt GLOBDOTS
 # zsh syntax highlighting plugin
 source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+# zsh vi mode plugin
+source ~/.config/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
 # default editor
 export VISUAL=nvim
 export EDITOR=nvim

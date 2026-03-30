@@ -7,7 +7,7 @@ format = """
 [$c$rust$golang$nodejs$php$java$kotlin$haskell$python](fg:green)\
 [$conda$nix_shell](fg:sapphire)\
 [ $time](fg:lavender)\
-[$cmd_duration](fg:text)\
+[$cmd_duration](fg:surface_0)\
  $character\
 """
 
@@ -122,8 +122,8 @@ disabled = false
 [character]
 disabled = false
 format = ' $symbol '
-success_symbol = '[\$](bold fg:green)'
-error_symbol = '[\$](bold fg:red)'
+success_symbol = '[%](bold fg:text)'
+error_symbol = '[%](bold fg:red)'
 vimcmd_symbol = '[](bold fg:sapphire)'
 # These three are fish only
 vimcmd_replace_one_symbol = '[R](bold fg:pink)'
