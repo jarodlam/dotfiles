@@ -32,6 +32,8 @@ function zvm_after_init() {
   source <(fzf --zsh)
 }
 source ~/.config/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
 # default editor
 export VISUAL=nvim
