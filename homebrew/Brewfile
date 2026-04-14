@@ -1,0 +1,8 @@
+tap "jurplel/tap"
+cask "boop"
+cask "ghostty"
+cask "jurplel/tap/instant-space-switcher"
+cask "linearmouse"
+cask "monitorcontrol"
+cask "obsidian"
+cask "rectangle"

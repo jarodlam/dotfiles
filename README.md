@@ -27,7 +27,11 @@ Switch to Home Manager configuration:
 home-manager switch --flake ~/dotfiles/home-manager#default --impure
 ```
 
-Install [Ghostty](https://ghostty.org) manually.
+Install Mac applications with Homebrew:
+
+```sh
+brew bundle install --file=~/dotfiles/homebrew/Brewfile
+```
 
 Use Stow to symlink dotfiles:
 
