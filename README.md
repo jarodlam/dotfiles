@@ -21,12 +21,6 @@ Install Home Manager into the Nix profile.
 nix profile install github:NixOS/nixpkgs/nixos-25.11#home-manager --priority 0
 ```
 
-Bootstrap Home Manager's stow module.
-
-```sh
-ln -s ../dotfiles/home-manager/.config/home-manager/ ~/.config/
-```
-
 Switch to Home Manager configuration.
 
 ```sh
@@ -45,7 +39,7 @@ Use Stow to symlink dotfiles.
 cd ~/dotfiles
 stow [MODULES...]
 # e.g.
-stow home-manager lazyvim tmux starship zsh
+stow lazyvim tmux starship zsh
 ```
 
 Remove specific Stow modules.
