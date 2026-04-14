@@ -15,51 +15,56 @@ git clone --recurse-submodules https://github.com/jarodlam/dotfiles.git ~/dotfil
 
 Install Nix.
 
-Install Home Manager into Nix profile:
+Install Home Manager into the Nix profile.
 
 ```sh
 nix profile install github:NixOS/nixpkgs/nixos-25.11#home-manager --priority 0
 ```
 
-Switch to Home Manager configuration:
+Bootstrap Home Manager's stow module.
+
+```sh
+ln -s ../dotfiles/home-manager/.config/home-manager/ ~/.config/
+```
+
+Switch to Home Manager configuration.
 
 ```sh
 home-manager switch --flake ~/dotfiles/home-manager#default --impure
 ```
 
-Install Mac applications with Homebrew:
+Set the default shell to `zsh`.
 
 ```sh
-brew bundle install --file=~/dotfiles/homebrew/Brewfile
+sudo chsh -s "$(command -v zsh)" "${USER}"
 ```
 
-Use Stow to symlink dotfiles:
+Use Stow to symlink dotfiles.
 
 ```sh
 cd ~/dotfiles
 stow [MODULES...]
 # e.g.
-stow nvim tmux starship zsh
+stow home-manager lazyvim tmux starship zsh
 ```
 
-To remove a specific Stow module:
+Remove specific Stow modules.
 
 ```sh
 cd ~/dotfiles
-stow -D .
+stow -D [MODULES...]
 ```
 
-## Set default shell to `zsh`
+Install Mac applications with Homebrew, including the Ghostty terminal emulator.
 
 ```sh
-command -v zsh | sudo tee -a /etc/shells
-sudo chsh -s "$(command -v zsh)" "${USER}"
+brew bundle install --file=~/dotfiles/homebrew/Brewfile
 ```
 
 ## Greyscale Catppuccin Mocha
 
 This is a modification of the [Catppuccin Mocha palette](https://catppuccin.com/palette/)
-that uses greyscale foreground and background colours with no bluish tint:
+that uses greyscale foreground and background colours with no bluish tint.
 
 | Name | Original | Greyscale | Notes |
 | --- | --- | --- | --- |
@@ -72,6 +77,6 @@ that uses greyscale foreground and background colours with no bluish tint:
 | Surface 2 | #585b70 | #646464 | ANSI 8 black bright |
 | Surface 1 | #45475a | #505050 | ANSI 0 black |
 | Surface 0 | #313244 | #3a3a3a | |
-| Base | #1e1e2e | #262626 | Background |
+| Base | #101010 | #262626 | Background (modified to make it darker) |
 | Mantle | #181825 | #1f1f1f | |
 | Crust | #11111b | #161616 | |
