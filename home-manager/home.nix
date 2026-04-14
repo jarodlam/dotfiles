@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  pkgs-unstable,
+  lib,
+  ...
+}:
 let
   # Build tools and language runtimes required for Neovim plugins.
   # Bundled into neovim's PATH so they don't conflict with dev shells.
@@ -13,7 +18,7 @@ let
       nixfmt
       nodejs
       ruff
-      rustup
+      nil # install directly because Mason requires Rustup-managed Rust
       unzip
 
       # Snacks.image rendering
@@ -53,44 +58,48 @@ in
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
-    packages = with pkgs; [
-      # # Adds the 'hello' command to your environment. It prints a friendly
-      # # "Hello, world!" when run.
-      # hello
+    packages =
+      (with pkgs; [
+        # # Adds the 'hello' command to your environment. It prints a friendly
+        # # "Hello, world!" when run.
+        # hello
 
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
-      # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+        # # It is sometimes useful to fine-tune packages, for example, by applying
+        # # overrides. You can do that directly here, just don't forget the
+        # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+        # # fonts?
+        # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
-      bash
-      buf
-      unstable.claude-code
-      direnv
-      fd
-      fzf
-      gh
-      lazygit
-      neovim-wrapped
-      ripgrep
-      starship
-      stow
-      tldr
-      tmux
-      tree
-      zsh
+        # # You can also create simple shell scripts directly inside your
+        # # configuration. For example, this adds a command 'my-hello' to your
+        # # environment:
+        # (writeShellScriptBin "my-hello" ''
+        #   echo "Hello, ${config.home.username}!"
+        # '')
+        bash
+        buf
+        difftastic
+        fd
+        fzf
+        gh
+        lazygit
+        neovim-wrapped
+        openssh
+        ripgrep
+        starship
+        stow
+        tldr
+        tmux
+        tree
+        zsh
 
-      (writeShellScriptBin "hms" ''
-        ${home-manager}/bin/home-manager switch --flake ~/dotfiles/home-manager#default --impure
-      '')
-    ];
+        (writeShellScriptBin "hms" ''
+          ${lib.getExe home-manager} switch --flake ~/dotfiles/home-manager#default --impure
+        '')
+      ])
+      ++ (with pkgs-unstable; [
+        claude-code
+      ]);
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
@@ -133,9 +142,10 @@ in
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
+    # We must use the NixOS module for direnv to get nix-direnv
     direnv = {
       enable = true;
-      enableZshIntegration = true;
+      package = pkgs.direnv.overrideAttrs { doCheck = false; }; # tests fail on Mac
       nix-direnv.enable = true;
     };
   };

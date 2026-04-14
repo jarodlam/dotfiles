@@ -23,26 +23,22 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        overlayModule = {
-          nixpkgs.overlays = [
-            (final: prev: {
-              unstable = nixpkgs-unstable.legacyPackages.${system};
-            })
-          ];
-        };
+        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+
         homeConfiguration = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
           # The path to your home.nix.
           modules = [
-            overlayModule
             ./home.nix
           ];
 
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
+          extraSpecialArgs = {
+            inherit pkgs-unstable;
+          };
         };
-
       in
       {
         # A default Home Manager configuration that can be used by any user.
