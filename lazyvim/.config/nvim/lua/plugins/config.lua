@@ -16,6 +16,8 @@ return {
       custom_highlights = function()
         return {
           WinBar = { bold = true, italic = true },
+          NormalFloat = { link = "Normal" }, -- transparent floats (picker, hover, etc.)
+          FloatBorder = { bg = "NONE" },
         }
       end,
       color_overrides = {
@@ -57,6 +59,9 @@ return {
         enabled = false,
       },
       picker = {
+        layout = {
+          fullscreen = true,
+        },
         formatters = {
           file = {
             filename_first = true,
@@ -68,6 +73,9 @@ return {
           files = {
             hidden = true,
             ignored = false,
+          },
+          explorer = {
+            layout = { fullscreen = false, preset = "sidebar" },
           },
         },
       },
