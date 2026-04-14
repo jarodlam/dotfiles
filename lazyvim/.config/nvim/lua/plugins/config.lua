@@ -375,6 +375,14 @@ return {
     "RyanMillerC/better-vim-tmux-resizer",
   },
   {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        nix = {}, -- Disable statix
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = {
@@ -399,10 +407,8 @@ return {
             "clangd", -- Use system clangd (from the PATH env variable)
           },
         },
-        statix = {
-          enabled = false,
-        },
         nil_ls = {
+          mason = false, -- Installed via Nix in neovim-dependencies
           settings = {
             ["nil"] = {
               nix = {
