@@ -51,6 +51,9 @@ function y() {
   rm -f -- "$tmp"
 }
 
+# fzf
+source <(fzf --zsh)
+
 # direnv
 eval "$(direnv hook zsh)"
 
