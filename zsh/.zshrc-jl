@@ -57,7 +57,17 @@ source <(fzf --zsh)
 # direnv
 eval "$(direnv hook zsh)"
 
-# aliases
+# colour aliases
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+
+# common ls aliases
+alias ll='ls -alFh'
+alias la='ls -A'
+alias l='ls -CF'
+
+# other aliases
 alias nd='(){ nix develop .#$1 -vv --command zsh }'
 alias nr='ulimit -v 10485760 && nix repl'
 alias lg='lazygit'
