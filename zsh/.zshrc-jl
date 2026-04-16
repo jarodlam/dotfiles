@@ -26,22 +26,14 @@ setopt GLOBDOTS
 # zsh syntax highlighting plugin
 source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# zsh vi mode plugin (deferred init clobbers keybindings, so use
-# zvm_after_init hook to restore fzf bindings after it initializes)
-function zvm_after_init() {
-  source <(fzf --zsh)
-}
-source ~/.config/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-ZVM_SYSTEM_CLIPBOARD_ENABLED=true
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-
 # default editor
 export VISUAL=nvim
 export EDITOR=nvim
 
 # zsh instant ESC key for vi mode
+# Default is 40 (0.4 s), keep a little bit of time so we don't interrupt ESC sequences
 # https://github.com/starship/starship/discussions/7104#discussioncomment-15344825
-export KEYTIMEOUT=1
+export KEYTIMEOUT=5
 
 # starship (guard against re-source: starship wraps zle-keymap-select,
 # and re-wrapping causes infinite recursion)

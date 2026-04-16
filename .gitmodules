@@ -4,6 +4,3 @@
 [submodule "tmux/.config/tmux/plugins/vim-tmux-navigator"]
 	path = tmux/.config/tmux/plugins/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
-[submodule "zsh/.config/zsh/zsh-vi-mode"]
-	path = zsh/.config/zsh/zsh-vi-mode
-	url = https://github.com/jeffreytse/zsh-vi-mode.git
