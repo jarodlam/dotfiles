@@ -82,6 +82,7 @@ in
         fd
         fzf
         gh
+        jq
         lazygit
         neovim-wrapped
         openssh
@@ -91,6 +92,7 @@ in
         tldr
         tmux
         tree
+        yq
         zsh
 
         (writeShellScriptBin "hms" ''
