@@ -21,6 +21,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+-- Disable auto-pairing in snacks picker input
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "snacks_picker_input",
+  callback = function(args)
+    vim.b[args.buf].minipairs_disable = true
+  end,
+})
+
 -- Disable diagnostics for markdown files (markdownlint stays available for formatting/fixing)
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",

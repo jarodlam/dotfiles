@@ -433,6 +433,13 @@ return {
     },
   },
   {
+    "nvim-mini/mini.pairs",
+    opts = {
+      -- Disable auto-pairing in command-line mode (: prompt)
+      modes = { insert = true, command = false, terminal = false },
+    },
+  },
+  {
     "saghen/blink.cmp",
     opts = {
       keymap = {
