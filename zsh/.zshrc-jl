@@ -47,6 +47,9 @@ setopt APPENDHISTORY
 # zsh autocomplete dot files
 setopt GLOBDOTS
 
+# zsh disable highlight on paste
+zle_highlight+=(paste:none)
+
 # zsh syntax highlighting plugin
 source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
