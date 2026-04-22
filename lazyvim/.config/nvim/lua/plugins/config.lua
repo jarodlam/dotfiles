@@ -18,6 +18,7 @@ return {
           WinBar = { bold = true, italic = true },
           NormalFloat = { link = "Normal" }, -- transparent floats (picker, hover, etc.)
           FloatBorder = { bg = "NONE" },
+          FloatTitle = { bg = "NONE" }, -- transparent float title labels
         }
       end,
       color_overrides = {
