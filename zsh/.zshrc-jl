@@ -11,6 +11,30 @@ bashcompinit
 # zsh vi mode
 bindkey -v
 
+# Option-key bindings for word navigation and deletion.
+#
+# With macos-option-as-alt enabled in ghostty, pressing option+key sends an
+# ESC-prefixed escape sequence. Without explicit bindings here, zsh's low
+# KEYTIMEOUT causes the bare ESC to be interpreted as "enter vi normal mode"
+# before the rest of the sequence arrives. Binding them explicitly tells zsh
+# to recognize the full sequence immediately.
+#
+# Ghostty keybinds (alt+arrow_left=esc:b, alt+arrow_right=esc:f) send the
+# sequences \eb and \ef respectively. The \e[1;3D / \e[1;3C variants are
+# the standard terminal escape sequences for Alt+Arrow that some apps send.
+#
+# viins = vi insert mode (normal typing), vicmd = vi normal/command mode.
+bindkey -M viins '\e[1;3D' backward-word       # Option+Left       - move cursor one word left
+bindkey -M viins '\e[1;3C' forward-word         # Option+Right      - move cursor one word right
+bindkey -M viins '\eb' backward-word            # Option+Left       - sent by ghostty keybind
+bindkey -M viins '\ef' forward-word             # Option+Right      - sent by ghostty keybind
+bindkey -M viins '\e\x7f' backward-kill-word    # Option+Backspace  - delete one word left
+bindkey -M viins '\ed' kill-word                # Option+d          - delete one word right
+bindkey -M vicmd '\e[1;3D' backward-word        # Option+Left       - in vi command mode
+bindkey -M vicmd '\e[1;3C' forward-word         # Option+Right      - in vi command mode
+bindkey -M vicmd '\eb' backward-word            # Option+Left       - in vi command mode
+bindkey -M vicmd '\ef' forward-word             # Option+Right      - in vi command mode
+
 # zsh history settings
 HISTFILE=~/.zsh_history
 HISTFILESIZE=10000000
