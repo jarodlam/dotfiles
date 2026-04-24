@@ -2,6 +2,13 @@
 # Add to top of system ~/.zshrc:
 #   source ~/.zshrc-jl
 
+# Ghostty shell integration
+# Must be sourced manually inside tmux
+# See https://github.com/ghostty-org/ghostty/blob/main/src/shell-integration/README.md#zsh
+if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+  source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
+fi
+
 # Enable zsh completion system
 autoload -Uz compinit
 autoload -Uz bashcompinit
