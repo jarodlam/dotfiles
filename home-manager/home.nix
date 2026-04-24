@@ -92,6 +92,7 @@ in
         tldr
         tmux
         tree
+        yazi
         yq
         zsh
 
