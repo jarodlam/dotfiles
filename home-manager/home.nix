@@ -93,7 +93,7 @@ in
         tmux
         tree
         yazi
-        yq
+        yq-go
         zsh
 
         (writeShellScriptBin "hms" ''
