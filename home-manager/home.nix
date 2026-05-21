@@ -83,6 +83,7 @@ in
         fzf
         gh
         jq
+        k9s
         lazygit
         neovim-wrapped
         openssh

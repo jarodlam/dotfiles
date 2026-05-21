@@ -91,6 +91,9 @@ source <(fzf --zsh)
 # direnv
 eval "$(direnv hook zsh)"
 
+# k9s
+export K9S_CONFIG_DIR=$HOME/.config/k9s
+
 # colour aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
